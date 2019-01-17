@@ -81,18 +81,21 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                   Curso Laravel
                 </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a href="{{ url('/MyFirstView') }}">MI primera ruta en Laravel a una vista</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{{ url('/usuarios') }}">Usuarios</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{{ url('/usuarios/nuevo') }}">Registrar Usuarios</a>
+                    </li>
+                </ul>     
             </div>
         </div>
+        
     </body>
 </html>

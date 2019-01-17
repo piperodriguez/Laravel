@@ -1,0 +1,62 @@
+El objetivo es aprender a como crear tus primeras rutas
+en un proyecto en laravel
+
+en la raiz del proyecto encontramos un folder llamado routes
+por defecto contiene dos archivos
+web.php se definen las rutas para la web
+y en 
+api.php las rutas para crear APIs para la aplicación.
+
+/******************************************************************************/
+
+Route::get('/usuarios', function(){
+	return 'Usuarios';
+});
+
+http://localhost/CursoLaravel/public/usuarios
+
+
+/*ahora creemos la ruta  para mirar la el detalle de un usuarios*/
+
+Route::get('/usuarios/detalles', function(){
+	return 'Mostrando detalle del usuario: '.$_GET['id'];
+});
+
+http://localhost/CursoLaravel/public/usuarios/detalles?id=6
+
+Route::get('/usuarios/{id}', function($id){
+	return 'Mostrando detalle del usuario: '.$id;
+});
+
+http://localhost/CursoLaravel/public/usuarios/6
+
+Route::get('/usuarios/{id}', function($id){
+	return "Mostrando detalle del usuario: {$id}";
+})->where('id', '[0-9]+');
+
+/*se condiciona que solo tenga numeros con la expresion regular*/
+
+
+/*Routa con dos parametros*/
+
+Route::get('/saludo/{nombre}/{username}', function($nombre,$username){
+	return "Bienvenido {$nombre}, tu nombre de usuario es {$username}";
+});
+
+http://localhost/CursoLaravel/public/saludo/felipe/frodriguez
+
+/*si el usuario no quiere nombre de usuario condicione el parametro para que pueda ser vacio*/
+
+Route::get('/saludo/{nombre}/{username?}', function($nombre,$username = null){
+
+	if ($username) {
+		return "Bienvenido {$nombre}, tu nombre de usuario es {$username}";
+	}else{
+		return "Bienvenido {$nombre}, no cuentas con nombre de usuario";
+	}
+	
+});
+
+
+
+

@@ -1,0 +1,14 @@
+composer create-project --prefer-dist laravel/laravel CursoLaravel
+
+Lo que significa que estamos creando un nuevo proyecto 
+llamado mi-proyecto con el comando create-project de Composer 
+a partir del paquete laravel/laravel, usando la opción
+ --prefer-dist para que Composer descargue los archivos del 
+repositorio de distribución.
+
+Correr la aplicación Instalada:
+la ruta en el browser donde instalo el proyecto
+
+
+
+
