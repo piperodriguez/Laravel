@@ -61,7 +61,14 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            #img{
+                width: 290px;
+                height: 200px;
+            }
         </style>
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -82,6 +89,7 @@
             <div class="content">
                 <div class="title m-b-md">
                    Curso Laravel
+                   <img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/LaravelLogo.png" id="img">
                 </div>
                 <ul class="list-group">
                     <li class="list-group-item">
