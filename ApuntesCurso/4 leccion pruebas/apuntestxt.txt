@@ -1,0 +1,67 @@
+Aprenderemos a utilizar componente de pruebas automatizadas que viene incluido con Laravel.
+
+permite ejecutar pruebas en el proyecto
+
+en la raiz del proyecto encontramos un folder llamado tests
+
+hay escribimos codigo para probar el rezto del codigo de la aplicación
+
+encontramos 2 folder dentro de tests
+Feasture -> pruebas que simula peticiones htttp al servidor
+unit .> pruebas que prueban clases y metodos sin http
+
+para probas abrimos una terminal
+
+y el comando
+
+vendor/bin/phpunit .:: jumm eso no funciona
+
+bueno aqui ya tomo el rumbo yo por que el tutorial no sirvio pero es importante
+saber a hacer las pruebas unitarias para ahorrarnos tiempo en el desarrollo
+de nuestra aplicación.
+
+
+Primero que nada debes saber que dentro de tu proyecto de Laravel 5.1 se encuentra una carpeta llamada test en donde se ubicarán todas las pruebas de tu aplicación. Las pruebas creadas deben de extender de la clase TestCase
+
+Nota: Es muy importante que para el correcto funcionamiento de tus pruebas el nombre de tus clases tenga el sufijo Test y el nombre de todas tus métodos el prefijo test
+
+
+UNIT
+
+Para crear una nueva clase es recomendable hacerlo desde linea de comandos. Para esto, ubicate en tu proyecto y coloca en consola
+
+php artisan make:test nombreDelTest
+
+Para nuestro ejemplo crearemos la clase WelcomeTest
+
+<?php
+
+namespace Tests\Feature;
+
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+class WelcomeTest extends TestCase
+{
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function testWelcomeMessage()
+    {
+        $this->visit('/')->see("Bienvenido a este Framework");
+    }
+}
+
+
+el crea este archivo
+Como veras es muy fácil de leer y de comprender el código para realizar un test, con $this->visit(‘ / ’) indicamos que al momento de visitar nuestra página principal ( Welcome ) tenemos que ver nuestro mensaje
+
+
+Si queremos correr nuestra prueba haremos lo siguiente:
+
+En consola colocaremos phpunit para así ejecutar todos los test que tenemos en nuestro directorio test/.
+
+

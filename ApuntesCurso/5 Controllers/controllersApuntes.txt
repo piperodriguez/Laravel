@@ -1,0 +1,39 @@
+Los controladores son un mecanismo que nos permite agrupar la lógica de peticiones HTTP relacionadas y de esta forma organizar mejor nuestro código
+
+para crear un controllador es sencillo adivina desde la consola de comandos yujuuuu
+
+php artisan make:controller UserController
+
+los controladores se almacenan en la carpeta app/http/controllers
+
+el resultado del comando es
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class UserController extends Controller
+{
+    //
+}
+
+
+el namespace es como el apellido de las clases 
+emm para definir eso es desde el archivo composer.json
+
+"autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ]
+    }
+
+para EJECUTAR PRUEBAS UTILIZAMOS 
+
+
+

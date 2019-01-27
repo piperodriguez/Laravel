@@ -24,32 +24,15 @@ Route::get('/MyFirstView', function () {
     return view('MyFirstView');
 });
 
-Route::get('/usuarios', function(){
-	return 'Usuarios';
-});
+Route::get('/usuarios', 'UserController@index');
 
-/*ahora creemos la ruta  para mirar la el detalle de un usuarios*/
-Route::get('/usuarios/{id}', function($id){
-	return "Mostrando detalle del usuario: {$id}";
-})->where('id', '[0-9]+');
+/*ahora creemos la ruta que apunte al controlador y despues del arroba a un metodo*/
 
-/*expresion regular utilizada en la condicion de la ruta tambien funciona esta \d */
+Route::get('/usuarios/{id}', 'UserController@show')->where('id', '[0-9]+');
 
-Route::get('/usuarios/nuevo', function(){
-	return'Crear nuevo Usuario';
-}); 
+Route::get('/usuarios/nuevo', 'UserController@create'); 
 
-/*routa con dos parametros*/
-
-Route::get('/saludo/{nombre}/{username?}', function($nombre,$username = null){
-
-	if ($username) {
-		return "Bienvenido {$nombre}, tu nombre de usuario es {$username}";
-	}else{
-		return "Bienvenido {$nombre}, no cuentas con nombre de usuario";
-	}
-	
-});
+Route::get('/saludo/{nombre}/{username?}', 'welcomeUserController@index');
 
 
 
