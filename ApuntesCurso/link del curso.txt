@@ -1,1 +1,14 @@
 https://styde.net/laravel-5/
+
+/*Forma de Correr comando de pruebas en Windows*/
+desde un cmd ubicado en el folder del proyecto
+
+C:\xampp\htdocs\CursoLaravel\vendor\bin\phpunit
+
+osea definir un comando rapido apara ejecutar esa vuelta rapido:
+
+doskey t=C:\xampp\htdocs\CursoLaravel\vendor\bin\phpunit
+
+/*para crear una prueba en test/Feature*/
+
+php artisan make:test UserModuleTest
