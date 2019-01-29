@@ -18,7 +18,9 @@ class UserModuleTest extends TestCase
     	/*permite saber que esa ruta esta corriendo exitosamente osea en estado 200*/
         $this->get('/usuarios')
         	->assertStatus(200)
-        	->assertSee('Usuarios');
+        	->assertSee('Usuarios')
+            ->assertSee('Yuri Vanessa')/*se valida desde un arreglo en el controlador que valide este nombre impreso en la vista*/
+            ->assertSee('Romano');
         	/*ademas comprueba que si esta retornando el texto Usuarios*/
 
     }

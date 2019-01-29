@@ -1,0 +1,14 @@
+Vistas
+En esta segunda parte del curso aprenderás a crear plantillas completas usando Laravel y su motor de plantillas Blade. Veremos también la diferencia entre escribir plantillas con PHP plano VS Blade, así como los temas de rendimiento y de seguridad para prevenir ataques XSS.
+
+Laravel también nos permite separar la lógica de presentación (es decir cómo vamos a “presentar” el contenido al usuario) de la lógica de nuestra aplicación (por ejemplo cómo vamos a obtener el contenido de la base de datos, validar datos de la petición, etc.) a través de la capa de “vistas” como veremos en la siguiente lección:
+
+las encontramos en la carpeta resources/view
+
+para que a las vistas no le agruegen codigo js ejemplo un usuario malparido que quiera joder
+trabajamos con el helper
+
+e
+
+escapa el codigo html y js externo de pendejos que se creen hackers
+
