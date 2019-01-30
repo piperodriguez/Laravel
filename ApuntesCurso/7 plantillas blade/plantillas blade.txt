@@ -1,0 +1,53 @@
+En esta lección comenzaremos a aprender sobre Blade, el sistema de plantillas de Laravel, el cual nos provee de muchas características que deberíamos tener en un lenguaje de plantillas, como por ejemplo la capacidad de escapar los datos de forma automática.
+
+
+para utilizar esta vuelta es necesario renombrar la extension de la vista
+
+ejemplo: users.php -> nombre de archivo normal
+
+		users.blade.php -> para utilizar blade el motor de plantillas de laravel
+
+osea que podemos escribir cod con sitaxis mas corta ejemplo
+
+PHP NORMAL:
+
+	<h1><?= e($title); ?></h1>
+	<ul>
+		<?php foreach($users as $user):?>
+		<li><?= e($user);?></li>
+		<?php endforeach; ?>
+	</ul>
+
+UTILIZANDO LA EXTENSION BLADE:
+
+	<h1>{{ $title }}</h1>
+	<ul>
+		@foreach ($users as $user)
+		<li>{{ $user }}</li>
+		@endforeach
+	</ul>
+
+
+esto nos ayuda no se a manejar plantillas y poder manipularles el cache
+la memoria que se almacena en el browser el cual es el que eliminamos
+rusticamente eliminando el historial del ya nombrado browser
+
+
+para limpiar cache de la vista el siguiente comando:
+
+php artisan view:clear
+
+
+para mirar las vistas que se crean en cache 
+
+dentro del folder srotage/framework/views
+
+
+
+´para pasar parametros por url 
+http://localhost/CursoLaravel/public/usuarios
+
+http://localhost/CursoLaravel/public/usuarios?empty
+
+ruta?nomnrevarible
+

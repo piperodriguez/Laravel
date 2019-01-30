@@ -25,5 +25,13 @@ class UserModuleTest extends TestCase
 
     }
 
+    function testValidacionMensajeListaUsuarios()
+    {
+        /*permite saber que esa ruta esta corriendo exitosamente osea en estado 200*/
+        $this->get('/usuarios?empty')
+            ->assertStatus(200)
+            ->assertSee('No hay usuarios registrados');
+
+    }
 
 }

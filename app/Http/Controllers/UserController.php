@@ -20,26 +20,25 @@ class UserController extends Controller
         // $users = User::all(); asi es para llamar un modelo obviamente de una tabla
 
 
+        /*Se prepara validacion para enviar el arreglo solo si esta con datos*/
 
-        $users = [
-            'Juan Felipe',
-            'Yuri Vanessa',
-            'Romano',
-            'Edgardo Enrique',
-            'Maria Isabella',
-            'Don Adolfo',
-            'Brayam Javier',
-        ];
+        if (request()->has('empty')) {
 
-    	/*
-        forma una
+            $users = [];
 
-        return view('users', [
-            'users' => $users,
-            'title' => 'Listado de Usuarios'
+        }else{
 
-        ]);*/
-        //forma 2
+            $users = [
+                'Juan Felipe',
+                'Yuri Vanessa',
+                'Romano',
+                'Edgardo Enrique',
+                'Maria Isabella',
+                'Don Adolfo',
+                'Brayam Javier',
+            ];
+        }
+            //se pregunta si la peticion contiene el campo empty        
         return view('users')->with([
             'users' => $users,
             'title' => 'Listado de Usuarios'
