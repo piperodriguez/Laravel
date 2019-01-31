@@ -36,6 +36,7 @@ class UserController extends Controller
                 'Maria Isabella',
                 'Don Adolfo',
                 'Brayam Javier',
+                'Bellita de Mi Sweet'
             ];
         }
             //se pregunta si la peticion contiene el campo empty        
@@ -47,7 +48,15 @@ class UserController extends Controller
 
     public function show($id)
     {
-    	return "Mostrando detalle del usuario: {$id}";
+
+        $msg = "Mostrando detalle del usuario:";
+
+        return view('usuario-detalle',[
+            'id' => $id,
+            'msg' => $msg
+
+        ]);
+
     }
 
     public function create()

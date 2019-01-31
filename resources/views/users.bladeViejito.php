@@ -1,5 +1,8 @@
-@extends('layout');
-	@section('content');
+
+@include('header');
+
+	<div class="row">
+		<div class="col-md-8">
 			<h1>{{ $title }}</h1>
 			@if(!empty($users))
 			<ul>
@@ -9,10 +12,11 @@
 			</ul>
 			@else
 				<label>No hay usuarios registrados</label>
-			@endif		
-	@endsection;
+			@endif			
+		</div>
+		<div class="col-md-4">
+			@include('barralateral');
+		</div>	
+	</div>
 
-	@section('barralateral');
-		<h2>Barra lateral personalizada</h2>
-	@endsection;
-
+@include('footer');

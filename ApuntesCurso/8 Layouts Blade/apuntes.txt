@@ -1,0 +1,57 @@
+A medida que nuestro proyecto crece nuestras plantillas se vuelven más complejas y es inevitable encontrarnos con que estamos repitiendo etiquetas y estructuras que podríamos compartir entre multiples vistas. Es por ello que en esta lección te enseñaremos a integrar cualquier diseño usando Laravel Blade; para que de esta manera puedas sacarle provecho a las diferentes directivas que ofrece este motor de plantillas y evitar así la repetición de código HTML, además de mantener tus vistas sencillas, expresivas, elegantes y bien estructuradas.
+
+
+coggemos una plantilla de boostrap
+
+https://getbootstrap.com/docs/4.2/examples/sticky-footer-navbar/
+
+copiamos el codigo fuente de la plantilla con la opcion inspeccionar codigo del browser
+
+nos ubicamos en el folder public del proyecto
+
+creamos un archivo llamado
+
+bootstrap.html
+
+listo traemos los dns osea los archivos que necesita la plantilla sea recursivo 
+ya tiene que saber resolver eso de memoria o me cacheteo a mi mismo
+
+ahora nos damos cuenta que el template consta de dos partes fundamentales
+
+el 
+
+header -> copiamos esta parte de la plantilla donde estan los llamados de los archivos las etiquetas meta etc...¿
+
+nos vamos para el folder de views
+y creamos el archivo
+ 
+
+header.blade.php y copiamos el codigo del header en esa nueva vista
+
+
+footer -> creamos el archivo footer.blade.php
+ y añadimos el cod
+
+
+ ahora incorporemos ese codigo reutilizable en la vista no se users.blade.php
+
+ @include('header');
+
+
+asi quedaria
+
+
+@include('header');
+	<h1>{{ $title }}</h1>
+	@if(!empty($users))
+	<ul>
+		@foreach ($users as $user)
+		<li>{{ $user }}</li>
+		@endforeach
+	</ul>
+	@else
+		<label>No hay usuarios registrados</label>
+	@endif
+@include('footer');
+
+

@@ -1,0 +1,18 @@
+https://styde.net/como-instalar-proyectos-existentes-de-laravel/
+
+Instalando dependencias con Composer
+
+composer install
+
+
+Archivo de configuración de Laravel
+
+Cada nuevo proyecto con Laravel, por defecto tiene un archivo .env con los datos de configuración necesarios para el mismo, cuando utilizamos un sistema de control de versiones como git, este archivo se excluye del repositorio por medidas de seguridad 
+
+en linux: cp .env.example .env
+
+en windows : copy .env.example .env
+
+Creando un nuevo API key
+
+php artisan key:generate
