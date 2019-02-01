@@ -1,0 +1,60 @@
+/************************************INTRODUCCION**************************************************/
+Las bases de datos son uno de los aspectos más importantes de un proyecto. Sin embargo el proceso de tener que diseñar, crear y llevar el control de la misma puede resultar bastante tedioso. Afortunadamente Laravel nos proporciona un mecanismo llamado Migraciones con el cual podremos diseñar la estructura de nuestra base de datos y mantener su historial de cambios a lo largo del desarrollo del proyecto.
+
+
+Qué son las migraciones
+
+Las migraciones son un mecanismo proporcionado por Laravel con el que podemos tener una especie de control de versiones sobre los cambios en la estructura de nuestra base de datos. Con las migraciones podemos diseñar esta estructura utilizando PHP y programación orientada a objetos, sin necesidad de escribir código SQL.
+
+Las migraciones son agnósticas al motor de base de datos que tu proyecto use. Al crear un esquema, las migraciones crearán las tablas para el motor de base de datos que tengamos configurado, pero estas mismas migraciones las podemos usar con otros motores de bases de datos diferentes. Es decir, podemos usar el mismo esquema en múltiples motores de bases de datos (siempre que el motor sea soportado por Laravel).
+
+Por defecto las migraciones se encuentran en el directorio database/migrations. Cada migración es un archivo .php que incluye en el nombre del archivo la fecha y la hora en que fue creada la migración (en formato timestamp) y el nombre de la migración.
+
+
+/******************************************PRACTICA********************************************/
+
+
+
+
+LA UBICACION ES :
+ folder en la rais encontramos database/migrations
+
+
+cada migracion es un archivo alojado en esta ruta 
+donde encontramos al principio la fecha con el prefijo de la tabla 
+
+2014_10_12_000000_create_users_table.php
+
+este archivo viene por defecto en la isntalacion normal de un proyecto en laravel
+
+ con la fehc a la hora en que se creo la migracion
+
+
+
+ Schema::Create
+ como primer argunemto el nombre de la tabla que cvamos a crear
+
+
+Comandos:
+
+comando para ejecutar las migraciones
+
+
+php artisan migrate
+
+arroja un error
+
+ahora toca configurar o crear una bd 
+
+creamos una bd llamada -> laravel
+
+y nos dirigimos al archivo
+
+.env
+
+y modificamos la configuracion de la base de datos xdddd
+
+bueno si observamos la base de datos creo los archivos que estan en migrations
+osea esa tablas
+
+

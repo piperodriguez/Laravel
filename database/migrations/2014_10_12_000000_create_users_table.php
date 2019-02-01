@@ -14,13 +14,13 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->increments('id');//Intenger unico y autoincremento
+            $table->string('name');// Varchar
+            $table->string('email')->unique();//varchar pero llama el metodo unique osea no puede haber 2 usuarios con el mismo emailñ
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->rememberToken();// no representa una columna como de seguridad o algo asi en autenticacion en ejemplo serviria larabel utilia esto para crear ese codigo supongo
+            $table->timestamps();//marcad de tiempo 
         });
     }
 
@@ -31,6 +31,7 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        /*para eliminar */
         Schema::dropIfExists('users');
     }
 }
