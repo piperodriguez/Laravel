@@ -1,0 +1,53 @@
+Las bases de datos son una parte
+fundamental del sistema asi que 
+por eso tenemos que aprender
+a manejarlas con este framework
+
+laravel nos permite administrarlas
+desde el proyecto
+con un proceso que se llama MIGRACIONES
+el cual nos permite diseñar las estructura
+de nuestra base de datos y mantener 
+su historial a lo largo del desarrollo
+del proyecto
+
+
+para empezar a trabajar nos ubicamos en la
+siguiente ruta del proyecto:
+
+nameProject/database/migrations
+
+alli encontramos 2 archivos por defecto
+
+la idea de este archivo es que creemos
+la estructura de una tabla
+
+cuando se crea el nombre de la archivo
+tiene la fecha y hora de creacion junto con el nombre de la tabla 
+
+simplemte es una clase php
+
+encontramos dos metodos 
+
+up()->creamos la estructura de la tabla
+
+down()->condicione que reescriba la tabla si existe.
+
+
+para configurar la conexion del proyecto
+a la base de datos nos dirigimos a la 
+siguiente ruta:
+
+nameProject/.env
+
+
+y escribimos nuestras credenciales
+
+
+
+
+
+
+
+
+
