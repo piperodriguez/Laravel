@@ -1,0 +1,47 @@
+En esta lección aprenderás cómo puedes modificar tablas ya existentes a través del sistema de migraciones de Laravel de dos formas: modificando una migración ya existente o creando una migración nueva. Para lograr esto utilizaremos varios comandos de Artisan como migrate:refresh, migrate:reset y migrate:rollback y por supuesto crearemos la nueva migración con el comando make:migration.
+
+
+para este ejercicio
+vamos a crear una columna
+a la tabla users
+name column : profesion
+
+obviamente creando una migracion
+haber que penso que sin eso
+concha que quiere desde 
+phpmyadmin noob !
+
+modificamos nuestro archivo
+
+projectname/database/migrations/
+2014_10_12_000000_create_users_table.php
+
+
+
+en el metodo up 
+le echamos mano xddd !
+
+ $table->string('profesion',100)->nullable();
+
+En esta lección aprenderás cómo puedes modificar tablas ya existentes a través del sistema de migraciones de Laravel de dos formas: modificando una migración ya existente o creando una migración nueva. Para lograr esto utilizaremos varios comandos de Artisan como migrate:refresh, migrate:reset y migrate:rollback y por supuesto crearemos la nueva migración con el comando make:migration.
+
+
+crear una migracion;
+
+php artisan make:migration create_pais_table
+
+para agregar una columna a la tabla pais
+
+php artisan make:migration add_clima_to_pais
+
+y hay agregamos el campo pengandole a la tabla
+
+despues php artisan migrte y solo ejecuta la migracion que creamos
+
+para ejecurtar: php artisan migrate:refresh
+
+para devolver a la ultima migracion: php artisan migrate:reset
+
+
+
+
