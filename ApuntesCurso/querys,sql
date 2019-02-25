@@ -1,0 +1,29 @@
+show tables
+
+describe pais
+
+describe users
+
+insert into users
+(
+   id,
+   name,
+   email,
+   profesion,
+   password
+)
+values(null,'Yuri Castublanco','yvcastiblanco@gmail.com','backend programmer','solati123')
+
+
+
+show tables
+
+describe profesiones;
+
+
+insert into profesiones(id_profesion,titulo,created_at)values(null,'Tecnico Sistemas',now());
+
+SELECt*from profesiones
+
+SELECT * FROM users
+

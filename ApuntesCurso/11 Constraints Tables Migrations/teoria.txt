@@ -1,0 +1,24 @@
+tenemos un problema con el campo profesion 
+ya que el usuario lo digita
+desplegar una lista de profesiones
+crear tabla profesion
+y relacionar a la taba users
+
+creamos la migracion para la tabla
+profesiones
+php artisan make:migration create_profesiones_table
+}    public function up()
+    {
+        Schema::create('profesiones', function (Blueprint $table) {
+            $table->increments('id_profesion');
+            $table->string('titulo', 100);
+            $table->timestamps();
+        });
+    }
+
+php atisan migrate
+
+ahora actualizemos la columna profesion de la tabla users 
+a id_profesion int
+
+ohp artisan make:migrstion add_profesion_id_ptofesion_to_users

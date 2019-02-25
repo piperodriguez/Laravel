@@ -38,6 +38,14 @@ y hay agregamos el campo pengandole a la tabla
 
 despues php artisan migrte y solo ejecuta la migracion que creamos
 
+pero creo el campo al final re paila 
+entonces fuy y modifique esto
+->after('nombre_pais')
+
+ahora para ejecutar ; php artisan migrate:rollback me devuelve a cuando no tenia la columna
+
+
+
 para ejecurtar: php artisan migrate:refresh
 
 para devolver a la ultima migracion: php artisan migrate:reset
