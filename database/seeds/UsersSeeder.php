@@ -12,6 +12,15 @@ class UsersSeeder extends Seeder
     public function run()
     {
 
+       $propfesion = DB::table('profesiones')
+       ->select('id_profesion')
+       ->where(['titulo' => 'Back-End Developer'])
+       ->value('id_profesion');
+
+       /*/dd($propfesion->first()->id_profesion);//$profesion[0]*/
+
+
+
     	date_default_timezone_set('America/Bogota');
     	$created_at = date("Y-m-d H:i:s");
 
@@ -19,7 +28,8 @@ class UsersSeeder extends Seeder
         	'name' => 'Juan Felipe Rodríguez Vargas',
         	'email' => 'vargasjuan367@gmail.com',
         	'password' => bcrypt('romano'),
-        	'created_at' => $created_at
+        	'created_at' => $created_at,
+            'id_profesion' => $propfesion
         ]);
     }
 }

@@ -16,7 +16,8 @@ class ProfesionSeeder extends Seeder
     	date_default_timezone_set('America/Bogota');
     	$created_at = date("Y-m-d H:i:s");
 
-        DB::table('profesiones')->insert([
+
+       DB::table('profesiones')->insert([
         	'titulo' => 'Back-End Developer',
         	'created_at' => $created_at
         ]);

@@ -1,0 +1,10 @@
+En esta lección veremos más a detalle cómo funciona el constructor de SQL de Laravel y aprovecharé la ocasión para enseñarte cómo puedes ejecutar consultas SQL de forma manual utilizando el framework y cómo puedes protegerte del ataque de inyección SQL cuando utilizas Laravel.
+
+
+
+
+
+
+
+
+
