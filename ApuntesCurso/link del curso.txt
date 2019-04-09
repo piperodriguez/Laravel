@@ -12,3 +12,6 @@ doskey t=C:\xampp\htdocs\CursoLaravel\vendor\bin\phpunit
 /*para crear una prueba en test/Feature*/
 
 php artisan make:test UserModuleTest
+
+arreglar migracion de un proyecto en laravel el famoso error 500
+
