@@ -1,0 +1,64 @@
+En la lección anterior cargamos datos de prueba utilizando un administrador de base de datos, sin embargo esto trae como consecuencia que cada vez que ejecutemos migrate:refresh o migrate:fresh perdamos dichos datos. En esta lección veremos una mejor forma de cargar datos de prueba utilizando los Seeders de Laravel.
+
+
+el primer comando que aprenderemos sera el siguiente
+
+php artisan make:seeder name_seeder
+
+ejemplo creemos uno para insertar algo en la tabla de profesiones:
+
+php artisan make:seeder ProfesionSeeder
+
+
+encontramos el seeder en la siguiente ruta:
+
+database/seeds/ProfesionSeeder.php
+
+laravel nos crea un caparazon para comenzar a escribir nuestro codigo
+en este caso esta clase creada vamos a trabajar en el metodo run()
+donde agregamos los campos de la tabla a la cual le vamos agregar datos
+
+despues registramos el seeder en 
+DatabaseSeeder.php
+
+$this->call(ProfesionSeeder::class);
+
+dd(ProfesionSeeder::class);
+
+para corroborar el nombre de la clase agregamos ese dd
+y por consola ejecutamos:
+
+php artisan db:seed
+
+el cual nos rroja el nombre exacto de la clase
+
+quitando dd(ProfesionSeeder::class);
+
+php artisan db:seed
+
+
+
+para re ejecutar las migraciones
+
+php artisan migrate:fresh
+ PELIGROSO COMANDO BORRA TODOS LOS DATOS DE LAS TABLES
+
+
+ DB::table()->truncate();
+
+ ponemos esto el seeder para que podamos ejecutar el seeder sin problemas
+
+ php artisan db:seed
+
+ahora creamos un seeder para la tabla usuarios
+
+
+php artisan make:seeder UsersSeeder
+
+
+para eliminar y crear las migraciones en un solo comando
+
+php artisan migrate:fresh --seed
+
+
+

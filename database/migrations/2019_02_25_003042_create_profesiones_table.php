@@ -15,7 +15,9 @@ class CreateProfesionesTable extends Migration
     {
         Schema::create('profesiones', function (Blueprint $table) {
             $table->increments('id_profesion');
-            $table->string('titulo', 100);
+            $table->string('titulo', 100)->unique();
+            //ose no pueden haber dos profesiones
+            //con el mismo nombre
             $table->timestamps();
         });
     }
