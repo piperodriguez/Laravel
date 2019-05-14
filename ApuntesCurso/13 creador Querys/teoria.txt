@@ -1,10 +1,49 @@
 En esta lección veremos más a detalle cómo funciona el constructor de SQL de Laravel y aprovecharé la ocasión para enseñarte cómo puedes ejecutar consultas SQL de forma manual utilizando el framework y cómo puedes protegerte del ataque de inyección SQL cuando utilizas Laravel.
 
 
+repasar como agregar una profesiona un usuario
+teniendo en cuenta que los registros de las profesiones estan en una tabla
+distinta a la de usuarios
+trabajaremos con la relacion de la tabla usuarios y profesioones
+
+y como ejecutar dwl
+llamando el metodo table y despues la accion
+	FORMA 1:
+		DB::table('usuarios')->insert(['username' => 'frodriguez']);
+	FORMA 2:
+       DB::table('profesiones')->insert([
+        	'titulo' => 'Back-End Developer',
+        	'created_at' => $created_at
+        ]);
+    FORMA 3:
+    	DB::insert('INSERT INTO profesiones (titulo, created_at)
+                    VALUES (:title, :fechaCreate)',
+                    [
+                        'title' =>'Back-End Developer',
+                        'fechaCreate' => $created_at
+                    ]);
 
 
+AHORA MIREMOS COMO ASOCIAMOS LA TABLA PROFESIONES A LA TABLA USUARIOS
 
 
+	FORMA 1:
+
+	 $Profesion = DB::select('SELECT id_profesion FROM profesiones WHERE titulo = "Back-End Developer"');
+	 dd($Profesion);//para mirar que arroja la consulta
+	 con php artisan:seed
+	 $Profesion[0]->id_profesion
+	 para obtener el valor
+
+	FORMA 2:
+
+       $propfesion = DB::table('profesiones')
+       ->select('id_profesion')
+       ->where(['titulo' => 'Back-End Developer'])
+       ->value('id_profesion');
+
+
+    FORMA3:
 
 
 
