@@ -1,0 +1,14 @@
+Para trabajar con bases de datos en Laravel no necesitamos escribir SQL de forma manual, ni siquiera utilizar el constructor de consultas. Laravel nos permite interactuar con la base de datos a un nivel mucho más alto a través del ORM Eloquent. Utilizando Eloquent podemos trabajar con modelos, que son clases que representan nuestras tablas en la base de datos y nos proveen de métodos con los que podemos interactuar en una interfaz más “elocuente” y orientada a objetos.
+
+
+active record para comenzar a trabajar con modelos
+
+entonces comenzamos a crear los modelos:
+con el siguiente comando:
+
+php artisan make:model
+
+el cual nos crea el archivo dentro de la carpeta app
+
+ahora con el modelo creado vamos y modifiquemos los seeder para trabajar como se debe
+
