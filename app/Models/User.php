@@ -28,6 +28,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /*con esto evitamos el tinyint que coloca cuando ejecutamos la migracion*/
+
+    protected $casts = [
+    'is_admin' => 'boolean',
+    ];
+
     public function isAdmin()
     {
         return $this->email === 'vargasjuan367@gmail.com';

@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();//metodo unique para no permitir dos emails iguales en la bd
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('is_admin')->default(false);
             $table->rememberToken();//tpñen de seguridad
             $table->timestamps();//hora y fecha de creacion
         });

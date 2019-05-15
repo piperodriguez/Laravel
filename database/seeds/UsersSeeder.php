@@ -17,12 +17,23 @@ class UsersSeeder extends Seeder
       /*Forma de trabajar con los modelos*/
        $propfesion = Profesiones::select('id_profesion')->where(['titulo' => 'Back-End Developer'])->value('id_profesion');
 
+       $profesion2 = Profesiones::select('id_profesion')->where(['titulo' => 'Front-End Developer'])->value('id_profesion');
       User::create([
           'name' => 'Juan Felipe Rodríguez Vargas',
           'email' => 'vargasjuan367@gmail.com',
           'password' => bcrypt('romano'),
+          'is_admin' => true,
           'id_profesion' => $propfesion
       ]);
+
+
+      User::create([
+        'name' => 'Yuri Vanessa Castiblanco Quintanilla',
+        'email' => 'yvcastiblanco5@gmail.com',
+        'password' => bcrypt('runa'),
+        'is_admin' => false,
+        'id_profesion' => $profesion2
+       ]);
 
 
 

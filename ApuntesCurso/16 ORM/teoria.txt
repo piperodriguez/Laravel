@@ -1,0 +1,88 @@
+En esta lección vamos a aprender un poco más sobre cómo trabajar con los atributos de Eloquent, es decir cómo podemos leer y asignar atributos a un modelo.
+La asignación de atributos la haremos utilizando asignación masiva e individual, y veremos de qué se trata el error MassAssignmentException,
+cómo solucionarlo y cual es la protección que nos ofrece Laravel para evitar la inyección de atributos no deseados cuando cargamos datos provenientes de la petición de un usuario (por ejemplo a través de un formulario o API).
+Además te enseñaré cómo puedes convertir atributos de un tipo a otro mediante la propiedad $casts de Eloquent.
+Todos estos conceptos te acercarán más a lo que necesitas saber para comenzar a crear módulos CRUD con este genial framework.
+
+
+ejemplo : intentemos crear una profesion por medio de tinker
+
+php artisan tinker
+
+Profesiones::create(['titulo' => 'Tester']);
+
+encontramos el error: MassAssignmentException
+
+esto es segun el video:
+
+$data = ['titulo' => 'tester' , 'id' => 10];
+Profesiones::create($data);
+
+nos sigue arrojando el error; lo que estamos trarando de aprender es que laravel controle los datos que se
+envian por medio del formulario para que no pueda modificar ni mierda xdddd!
+
+listo poara solucionar este problema vamos al modelo que estemos trabajando en este caso el de profesiones
+
+protected $fillable = ['titulo'];
+
+asi para que protejamos las propiedades o atributos que nosostros como desarrolladores de app queremos o necesitamos proejer
+
+woww realizo un insert en la bd muy re contra fuerte
+
+
+bueno modificamos la migracion de usuarios y agregamos el campo isadmin->default(false);
+
+y refrescamos las migraciones: php artisan migrate:fresh
+
+/******************************************/
+
+cuando en la migracion indicamos que el campo sea boolean pero se
+a la hora de ejecutar la migracion miramos la estructura de la tabla y encontramos
+un tinyint tenemos que hacer lo siguiente:
+
+
+modificamos el modelo: en este caso User.php
+
+    protected $casts = [
+    'is_admin' => 'boolean',
+    ];
+
+en tinker:
+
+$users = User::all();
+
+$user = $users->first();
+
+$user->is_admin;
+
+nos damos cuenta que esto nos permite interactuar
+y que pasa si intentamos crear un nuevo usuario
+
+$user = new User(['name' => 'hacker', 'email' => 'anonymus@solati.com.co','password' => bcrypt('123')]);
+
+$user->is_admin = true;
+
+para imprimir
+
+$user
+
+para salvar este usuario
+
+$user->save();
+
+para actualizarle el nombre al usuario de hacker a anonymus que esta almacenado en la variable:
+
+$user->name = 'Anonymus';
+
+para validar que el usuario existe podemos trabajar con la siguiente opcion:
+
+$user->exists;
+
+para eliminar el usuario:
+
+$user->delete();
+
+
+
+
+
