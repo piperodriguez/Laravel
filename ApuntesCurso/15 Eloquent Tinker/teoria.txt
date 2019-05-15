@@ -1,0 +1,39 @@
+Usando Eloquent ORM de forma interactiva con Tinker
+
+En esta lección aprenderemos a interactuar desde la terminal con nuestra aplicación utilizando la consola dinámica Tinker. También veremos nuevos métodos de Eloquent para interactuar con nuestros modelos y aprenderemos cómo crear nuestros propios métodos dentro de los modelos.
+
+
+
+bueno segun lo que entiendo es que tinker es como la consola de laravel
+
+para ingresar a ella ejecutamos
+php artisan tinker
+
+en esta terminal de laravel podemos ejecutar codigo php
+
+lo que sea en php intentalo xdddddd °°!!!
+tambien se utiliza para utilizar las clases de nuestros modelos
+
+ejecutemos: en nuestro tinker:
+
+App\Models\Profesiones::all();
+
+ejemplos: tinker
+
+use App\Models\Profesiones;
+
+Profesiones::all();
+
+si genera errores ejecute : composer dump-autoload
+
+php artisan tinker
+
+Profesiones::all();
+Profesiones::get();
+
+$profesion = Profesiones::all();
+
+
+despues se juega con los metodos: first, last, random(1), pluck('title');
+
+
