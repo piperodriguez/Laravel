@@ -19,7 +19,8 @@ class UsersSeeder extends Seeder
 
        $profesion2 = Profesiones::select('id_profesion')->where(['titulo' => 'Front-End Developer'])->value('id_profesion');
       User::create([
-          'name' => 'Juan Felipe Rodríguez Vargas',
+          'first_name' => 'Juan Felipe',
+          'last_name' => 'Rodríguez Vargas',
           'email' => 'vargasjuan367@gmail.com',
           'password' => bcrypt('romano'),
           'is_admin' => true,
@@ -28,7 +29,8 @@ class UsersSeeder extends Seeder
 
 
       User::create([
-        'name' => 'Yuri Vanessa Castiblanco Quintanilla',
+        'first_name' => 'Yuri Vanessa',
+        'last_name' => 'Castiblanco Quintanilla',
         'email' => 'yvcastiblanco5@gmail.com',
         'password' => bcrypt('runa'),
         'is_admin' => false,

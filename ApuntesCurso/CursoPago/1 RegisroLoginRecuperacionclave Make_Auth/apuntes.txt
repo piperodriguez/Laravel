@@ -1,0 +1,142 @@
+REGISTRO LOGIN Y RECPUEREACION CLAVE CON MAKE:aUTH
+
+En esta segunda lección conocerás cómo funciona el registro y login que viene incluido en la versión 5.2 de Laravel con el cual a partir de un simple comando genera las vistas, rutas y controladores correspondientes pero que nos da la facilidad de personalizarlo completamente, en el siguiente video aprenderás cómo.
+
+
+tenemos el maravilloso comando
+php artisan make:auth
+
+al ejecutar este comando nos damos cuenta que se generan archivos como la carpeta auth en views
+y el controller HomeController.php
+y se actualizo el archivo de las rutas
+
+nos damos cuenta que cuando ingresamos y iniciamos sesion en el login la url cambia
+/home
+
+pero que pasa si nos delvomemos a la raiz
+
+/
+
+aparece un link que dice home pero no aparece la opcion de cerrar sesion ni el mensaje de biencenida a nuestro usuario
+
+para resolver este problema simplemente nos vamos a routes/web.php
+
+y cambiamos de luga r la siguiente ruta:
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::group(['middleware' => ['web']], function(){
+	Route::get('/', function () {
+	    return view('welcome');
+	});
+});
+
+dentro de lo que dice middleware// jumm no funciono
+
+bueno siguiendo en la opcion de registro
+para modificar los campos que pide el formulario de registro
+nos ubicamos la carpeta de controladores y en auth/RegistreController.php
+
+y modificamos el metodo: validator y create
+
+donde modifcamos
+
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+
+y despues vamos y modificamos la migracion : createuserstable.php
+y agregamos los campos first_name and last_name
+
+despues vamos y modificamos las vistas:
+
+
+views/auth/registre.blade.php
+
+copiamos todo lo que estaba del campo name:
+ y modificamos el value,name, error bueno vaya y mire el ejemplo xddd
+
+ por ultimo tenemos que modifcar el modelo users.php
+ y agregar los campos first_name y last_name
+
+ahora podemos darnos cuenta que el nombre de usuario ya no aparece en el lugar de cerrar sesion
+o que no nos dice bienvenido care chimba estas logueado
+
+nos dirijimos a
+
+views/layouts/app.blade.php
+
+y actualizamos name por first_name
+
+o tammbien si queremos el nombre completo vamos al modelo
+y creaamos
+
+    public function getNombrecompletoAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
+y en views/layouts/app.blade.php
+
+y actualizamos name por Nombrecompleto
+
+
+
+/***************RESTAURAR CONTASEÑA*****************/
+
+
+bueno obviamente como nuestro ambiente es local no van a salir correos pero hay una manera de trabajar con esto localmente
+
+la configuracion del smtp esta en nuestro archivo .env
+
+donde vamos a modificar :
+
+MAIL_DRIVER=smtp por MAIL_DRIVER = log
+
+esta opcion en vez de enviar el email lo va a guardar en
+
+storage/logs/laravel.log
+
+bueno del dia en el que estemos trabajando ya que laravel por dia nos genera un log
+
+eliminamos el contenido de ese archivo guardamos y vamos a probar la opcion de restaurar contraseña
+ y recibimos la alerta de que se restauro xdddd
+
+
+ revisemos el log y miremos que hay donde encotramos la estructura del correo que debio llegar al ussuario
+ junto con el link para restaurar la contraseña
+
+
+ http://localhost/password/reset/70ea88a9889cb738bec047234bf03d165a274e74e92010ac5331870f5868a11b
+
+
+http://127.0.0.1:8000/password/reset/70ea88a9889cb738bec047234bf03d165a274e74e92010ac5331870f5868a11b
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

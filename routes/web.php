@@ -11,14 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 /*para que solo retornemos una cadena
 Route::get('/', function () {
     return 'Bienvenido Juan Felipe';
 });
 */
+
+Route::group(['middleware' => ['web']], function(){
+	Auth::routes();
+	Route::get('/', function () {
+	    return view('welcome');
+	});
+	Route::get('/home', 'HomeController@index')->name('home');
+});
 
 Route::get('/MyFirstView', function () {
     return view('MyFirstView');

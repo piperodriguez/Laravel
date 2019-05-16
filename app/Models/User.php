@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name', 'last_name', 'email', 'password',
     ];
 
     /**
@@ -37,5 +37,10 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return $this->email === 'vargasjuan367@gmail.com';
+    }
+
+    public function getNombrecompletoAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
     }
 }
