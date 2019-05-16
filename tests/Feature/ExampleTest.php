@@ -18,4 +18,12 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function testFirstView()
+    {
+        $espera = $this->get('/MyFirstView');
+        $espera->assertStatus(200);
+    }
+
+
 }

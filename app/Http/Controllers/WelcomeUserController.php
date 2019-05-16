@@ -15,7 +15,7 @@ class WelcomeUserController extends Controller
 		if ($username) {
 			return "Bienvenido {$nombre}, tu nombre de usuario es {$username}";
 		}else{
-			return "Bienvenido {$nombre}, no cuentas con nombre de usuario";
+			return "Bienvenido {$nombre}";
 		}
     }
 }

@@ -14,9 +14,9 @@ class UserController extends Controller
     public function index()
     {
     	//-----------------------------------------------------
-		//Metodo para mirar la el detalle de un usuarios 
+		//Metodo para mirar la el detalle de un usuarios
 		//-----------------------------------------------------
-    	
+
         // $users = User::all(); asi es para llamar un modelo obviamente de una tabla
 
 
@@ -38,10 +38,14 @@ class UserController extends Controller
                 'Brayam Javier',
             ];
         }
-            //se pregunta si la peticion contiene el campo empty        
+            //se pregunta si la peticion contiene el campo empty
+
+        $msg = "welcome to laravel";
+
         return view('users')->with([
             'users' => $users,
-            'title' => 'Listado de Usuarios'
+            'title' => 'Listado de Usuarios',
+            'mensaje' => $msg
         ]);
     }
 
@@ -52,6 +56,6 @@ class UserController extends Controller
 
     public function create()
     {
-    	return'Crear nuevo Usuario';	
+    	return'Crear nuevo Usuario';
     }
 }
