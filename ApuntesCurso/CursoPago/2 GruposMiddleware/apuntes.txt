@@ -1,0 +1,16 @@
+COMO FUNCIONAN LOS GRUPOS MIDDLEWARE
+
+Bienvenidos a la tercera lección del Curso Novedades de Laravel 5.2 en la cual estudiaremos los Middleware, el componente de Laravel que nos proporciona un mecanismo conveniente para filtrar las peticiones HTTP entrantes de nuestras aplicaciones y de esta manera se minimiza la carga de trabajo en los controladores. Pero además, ahora en Laravel 5.2 nos facilita aún más esta tarea pues se ha incluido una nueva forma de organizarlos con los grupos de Middleware o middlewareGroups.
+
+
+Los MIDDLEWARE tienen la funcion de alojarse en medio de la peticion del usuario y la logica de la aplicacion
+
+EJemplo: imaginemonos que vamos a abordar un avion la funcion de los MIDDLEWARE seria la de los controles de un aeropuerto
+antes de alojar un vuelo.
+
+ estos archivos los encontramos en la siguiente ruta del proyecto:
+
+ Http/kernel.php
+
+donde se alojan caracterizticas de seguridad en el caso de que el usuario se conecte por medio de la web o una API
+

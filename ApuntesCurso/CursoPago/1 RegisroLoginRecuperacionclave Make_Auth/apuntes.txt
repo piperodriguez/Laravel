@@ -1,5 +1,5 @@
 REGISTRO LOGIN Y RECPUEREACION CLAVE CON MAKE:aUTH
-
+https://styde.net/registro-login-y-recuperacion-de-clave-con-el-comando-makeauth-en-laravel-5-2/
 En esta segunda lección conocerás cómo funciona el registro y login que viene incluido en la versión 5.2 de Laravel con el cual a partir de un simple comando genera las vistas, rutas y controladores correspondientes pero que nos da la facilidad de personalizarlo completamente, en el siguiente video aprenderás cómo.
 
 
