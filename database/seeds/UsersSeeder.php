@@ -3,6 +3,8 @@ use App\Models\User;
 use App\Models\Profesiones;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+
+
 class UsersSeeder extends Seeder
 {
     /**
@@ -36,7 +38,18 @@ class UsersSeeder extends Seeder
         'is_admin' => false,
         'id_profesion' => $profesion2
        ]);
-
+        
+        
+      User::create([
+          
+          'first_name' => 'UsuarioDePrueba',
+          'last_name' => 'testerQA',
+          'email' => 'pruebas123@gmail.com',
+          'password' => bcrypt('123456'),
+          'is_admin' => false,
+          'id_profesion' => 5
+      ]);
+    
 
 
       //$Profesion = DB::select('SELECT id_profesion FROM profesiones WHERE titulo = "Back-End Developer"');
