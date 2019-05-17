@@ -14,7 +14,7 @@ class UserModuleTest extends TestCase
 {
   //para los test en la base de datos de prueba
 //ahorra ejecutar la migracion
-    use RefreshDatabase;
+    //use RefreshDatabase;
 
     /**
      * A basic test example.
@@ -31,7 +31,11 @@ class UserModuleTest extends TestCase
         factory(User::class)->create([
           'first_name' => 'Lucho',
           'last_name' => 'Diaz',
-
+          'email' => 'lagloriadelucho@gmail.com',
+          'password' => bcrypt('123456'),
+          'is_admin' => false,
+          'website' => 'www.solati.com.co',
+          'id_profesion' => $propfesion
 
         ]);
         //como se soliucita en la prueba que exista el usuario lucho se crea aqui mismo en las pruebas
@@ -44,14 +48,32 @@ class UserModuleTest extends TestCase
 
     }
 
-    function testValidacionMensajeListaUsuarios()
+   /*
+  ASH ESTA PRUEBA ME LIMPIA LA TABLA NO RECONOCE LA BASE DE DATOS DE PRUEBA
+   function testValidacionMensajeListaUsuarios()
     {
         /*permite saber que esa ruta esta corriendo exitosamente osea en estado 200*/
         //veñirifica que existan usuarios en la consukta reakuzada
 
-        $this->get('/usuarios')
+        /*$this->get('/usuarios')
             ->assertStatus(200)
             ->assertSee('No hay usuarios registrados');
+
+    }*/
+
+
+    function testDetalleUsuario()
+    {
+
+      $user = factory(User::class)->create([
+        'first_name' => 'Ricardo',
+        'last_name' => 'Arjona',
+
+      ]);
+
+      $this->get('/usuarios/'.$user->id)
+      ->assertStatus(200)
+      ->assertSee('Ricardo Arjona');
 
     }
 

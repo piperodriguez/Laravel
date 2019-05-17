@@ -20,8 +20,8 @@ se realiza la prueba de que se valide que este registrado
 en la bd un usurio usuariodepruebas
 
 /******************DESDE LA OFICINA******************/
-
-
+para el login
+https://codigofacilito.com/articulos/crear-pruebas-automatizadas-en-laravel-con-phpunit
 
 
 //re ejecuta las migraciones y los seeders

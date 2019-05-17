@@ -24,10 +24,10 @@ class UserController extends Controller
 
         //FORMA NUMERO 1 constructor de consultas:
         //$users = DB::table('users')->get();
-        
+
         //FORMA NUMERO 2 CON MODELO:
-        $users = User::all(); 
-    
+        $users = User::all();
+
         $msg = "Usuarios De la BD";
 
         return view('users')->with([
@@ -39,7 +39,11 @@ class UserController extends Controller
 
     public function show($id)
     {
-    	return "Mostrando detalle del usuario: {$id}";
+        print_r($id);
+        //con base de datps
+        $user = User::find($id);
+
+    	return view('usuarios/detalleuser', compact('user'));
     }
 
     public function create()

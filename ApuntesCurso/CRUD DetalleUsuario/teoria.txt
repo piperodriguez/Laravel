@@ -1,0 +1,44 @@
+DETALLE O PÉRFIL DE USUARIO CON LARAVEL
+
+
+En esta lección vamos a hacer el proceso inverso a la lección anterior, en lugar de escribir el código y luego la prueba, primero escribiremos la prueba y luego el código para que la prueba pase, que es a lo que se refiere el “Desarrollo guiado por pruebas automatizadas” o TDD. Esto nos permitirá poder guiarnos mientras construimos las diferentes partes de nuestra aplicación, que en el caso de esta lección es el perfil del usuario.
+
+
+php unit configurar base de datos de prueba
+
+
+bueno ya que estamos orobando
+
+    function testDetalleUsuario()
+    {
+
+      $user = factory(User::class)->create([
+        'first_name' => 'Ricardo',
+        'last_name' => 'Arjona',
+
+      ]);
+
+      $this->get('/usuarios/'.$user->id)
+      ->assertStatus(200)
+      ->assertSee('Ricardo Arjona');
+
+    }
+
+
+este es el comando para probar un metodo de un test
+
+obviamente con el alias asignado que es t
+
+
+
+t --filter testDetalleUsuario
+
+
+ahora modifiquemos el controlador de usuarios
+
+y modificamos el metodo show
+
+
+
+
+
