@@ -7,11 +7,13 @@
 </head>
 <body>
 	<h1>{{ $title }}</h1>
+    
+    
 	@if(!empty($users))
 	<h3>{{ $mensaje }}</h3>
 	<ul>
 		@foreach ($users as $user)
-		<li>{{ $user }}</li>
+		<li>{{ $user->first_name }}, {{ $user->email }}</li>
 		@endforeach
 	</ul>
 	@else

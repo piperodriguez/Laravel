@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
+
 
 
 //======================================================================
@@ -19,28 +22,13 @@ class UserController extends Controller
 
         // $users = User::all(); asi es para llamar un modelo obviamente de una tabla
 
-
-        /*Se prepara validacion para enviar el arreglo solo si esta con datos*/
-
-        if (request()->has('empty')) {
-
-            $users = [];
-
-        }else{
-
-            $users = [
-                'Juan Felipe',
-                'Yuri Vanessa',
-                'Romano',
-                'Edgardo Enrique',
-                'Maria Isabella',
-                'Don Adolfo',
-                'Brayam Javier',
-            ];
-        }
-            //se pregunta si la peticion contiene el campo empty
-
-        $msg = "welcome to laravel";
+        //FORMA NUMERO 1 constructor de consultas:
+        //$users = DB::table('users')->get();
+        
+        //FORMA NUMERO 2 CON MODELO:
+        $users = User::all(); 
+    
+        $msg = "Usuarios De la BD";
 
         return view('users')->with([
             'users' => $users,

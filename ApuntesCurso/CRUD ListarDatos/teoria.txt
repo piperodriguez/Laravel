@@ -1,0 +1,34 @@
+LISTAR DATOS DINAMICAMENTE
+
+
+En esta lección vamos a comenzar el desarrollo del módulo CRUD de usuarios reemplazando el listado estático de usuarios con los registros que se encuentran en la base de datos. Para ello utilizaremos el constructor de consultas de Laravel y el ORM Eloquent.
+
+
+
+
+
+nos dirijimos al controlador y eliminanos el array con datos quemados;
+
+
+        if (request()->has('empty')) {
+
+            $users = [];
+
+        }else{
+
+            $users = [
+                'Juan Felipe',
+                'Yuri Vanessa',
+                'Romano',
+                'Edgardo Enrique',
+                'Maria Isabella',
+                'Don Adolfo',
+                'Brayam Javier',
+            ];
+        }
+
+
+
+
+
+
