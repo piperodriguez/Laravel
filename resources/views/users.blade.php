@@ -7,10 +7,20 @@
 </head>
 <body>
 	<h1>{{ $title }}</h1>
-    
-    
-	@if(!empty($users))
-	<h3>{{ $mensaje }}</h3>
+
+	<ul>
+		@forelse ($users as $user)
+			<li>{{ $user->first_name }}, {{ $user->email }}</li>
+		@empty
+			<label>No hay usuarios registrados</label>
+		@endforelse
+	</ul>
+
+
+
+
+	<!--@if(empty($users))
+		<h3>{{ $mensaje }}</h3>
 	<ul>
 		@foreach ($users as $user)
 		<li>{{ $user->first_name }}, {{ $user->email }}</li>
@@ -19,5 +29,7 @@
 	@else
 		<label>No hay usuarios registrados</label>
 	@endif
+	-->
+
 </body>
 </html>

@@ -19,13 +19,104 @@ en la vista se llama el atributo del array que llega y se imprime
 se realiza la prueba de que se valide que este registrado
 en la bd un usurio usuariodepruebas
 
-
+/******************DESDE LA OFICINA******************/
 
 
 
 
 //re ejecuta las migraciones y los seeders
 php artisan migrate:fresh -seed
+
+
+php artisan db:seed
+
+bueno todo modificar la vista users.blade.php
+
+para utilizar el forelse
+
+y correr las pruebas
+
+tamvien en database/factories/UserFactory.php
+
+cambiar la ruta ya que el modelo user lo metimos dentro de una carpeta
+
+testValidacionTextoRuta -> que valida que exista ciertos usuarios listados en la vista
+
+
+testValidacionMensajeListaUsuarios -> que valida que exista el mensaje de que no hay usuarios conectados
+este metodo trunca la tabla
+
+osea cada vez que ejecutamos las pruebas realiza el truncate y musetra el mensaje no hay usuarios
+
+y para que funcione la prueba testValidacionTextoRuta tenemos que ejecutar los seeders para crear
+los registros en la tabla insert.
+
+
+entonces que hacemos que mamera segun el video nos dice que debemos crear dos bases de datos:
+
+entonces creamos la base de datos
+
+create database cursolaraveltest;
+
+
+despues vamos a la siguiente ruta:
+
+en la raiz de nuestro proyecto encontramos el archivo
+
+phpunit.xml
+
+y definimos una variable de entorno
+ <env name="DB_DATABASE" value="cursolaraveltest"/>
+
+ mandando como valor la base de datos de prueba
+
+jumm para crear las tablas en la nueva bd toco ir a modifificar el .env
+
+a la bd nueva
+
+
+y despues poner la local nuevamente
+
+emm bueno agregamos un campo a la tabla users que se llamara website
+
+
+y tambien al registro que se crea en el test del usuario de prueba
+
+
+si ejecutamos las pruebas tenemos un error que indica que no existe el campo website
+
+
+entonces vamos a .env
+
+ponemos la bd de test
+
+
+php artisan config:cache
+php artisan migrate:fresh
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

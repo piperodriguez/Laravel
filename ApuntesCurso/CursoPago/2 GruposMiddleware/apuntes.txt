@@ -14,3 +14,12 @@ antes de alojar un vuelo.
 
 donde se alojan caracterizticas de seguridad en el caso de que el usuario se conecte por medio de la web o una API
 
+ podemos crear la seguridad del administrador en este archivo.
+
+ 'admin' => [
+ 	'web',
+ 	'auth',
+ 	Authorize::class
+ ],
+
+ es un elemento mas que nos da la habilidad de configurar nuestra app

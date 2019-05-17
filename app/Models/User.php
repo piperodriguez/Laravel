@@ -6,6 +6,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use App\Models\Profesiones;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -42,5 +44,10 @@ class User extends Authenticatable
     public function getNombrecompletoAttribute()
     {
         return $this->first_name . ' ' . $this->last_name;
+    }
+
+    public function getprofession()
+    {
+        return $this->belongsTo(Profesiones::class);
     }
 }

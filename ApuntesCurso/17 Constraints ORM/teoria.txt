@@ -1,0 +1,32 @@
+Las tablas de una base de datos a menudo están relacionadas unas con otras. Por ejemplo, un usuario puede estar asociado a una profesión y una profesión puede tener muchos usuarios asociados. Utilizando el ORM Eloquent podemos hacer que este proceso sea mucho más fácil, trabajando con las relaciones directamente dentro de nuestros modelos (usando Programación Orientada a Objetos) y creando métodos personalizados que nos evitarán tener que construir consultas de forma manual.
+
+
+
+permite crear relaciones entre un modelo y otro
+
+tinker:
+
+$user = User::first();
+
+si trato de traer la profesion como un objeto
+
+$user->profesion
+
+me arroja un null
+
+bueno vamos a configurar esta accion ya que da pereza hacer el SQL
+nos dirigimos al modelo en este caso user:
+
+app/models/User.php
+
+
+y declaramos un nuevo objeto que se llame profesion:
+
+
+public function profesion()
+{
+	return $this->belongsTo(Profesiones::class);
+}
+
+
+

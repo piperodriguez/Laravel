@@ -18,7 +18,7 @@ laravel nos crea un caparazon para comenzar a escribir nuestro codigo
 en este caso esta clase creada vamos a trabajar en el metodo run()
 donde agregamos los campos de la tabla a la cual le vamos agregar datos
 
-despues registramos el seeder en 
+despues registramos el seeder en
 DatabaseSeeder.php
 
 $this->call(ProfesionSeeder::class);
@@ -36,6 +36,8 @@ quitando dd(ProfesionSeeder::class);
 
 php artisan db:seed
 
+
+php artisan db:seed --class=UsersSeeder
 
 
 para re ejecutar las migraciones

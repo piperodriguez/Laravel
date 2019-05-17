@@ -7,7 +7,11 @@ C:\xampp\htdocs\CursoLaravel\vendor\bin\phpunit
 
 osea definir un comando rapido apara ejecutar esa vuelta rapido:
 
-doskey t=C:\xampp\htdocs\CursoLaravel\vendor\bin\phpunit
+doskey test=vendor\bin\phpunit
+
+linux
+
+alias t=vendor\bin\phpunit
 
 /*para crear una prueba en test/Feature*/
 

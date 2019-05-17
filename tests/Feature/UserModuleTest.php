@@ -6,10 +6,16 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
+
 use App\Models\User;
+use App\Models\Profesiones;
 
 class UserModuleTest extends TestCase
 {
+  //para los test en la base de datos de prueba
+//ahorra ejecutar la migracion
+    use RefreshDatabase;
+
     /**
      * A basic test example.
      *
@@ -19,24 +25,21 @@ class UserModuleTest extends TestCase
     {
        /*sirve para verificar que exista usuario en la vista usuarios con el nombre lucho
         asi no exista en la bade de datos
-       */ 
+       */
+       $propfesion = Profesiones::select('id_profesion')->where(['titulo' => 'Back-End Developer'])->value('id_profesion');
+
         factory(User::class)->create([
           'first_name' => 'Lucho',
           'last_name' => 'Diaz',
-          'email' => 'lagloriadelucho@gmail.com',
-          'password' => bcrypt('123456'),
-          'is_admin' => false,
-          'id_profesion' => 5
-            
+
+
         ]);
-        
+        //como se soliucita en la prueba que exista el usuario lucho se crea aqui mismo en las pruebas
     	/*permite saber que esa ruta esta corriendo exitosamente osea en estado 200*/
         $this->get('/usuarios')
         	->assertStatus(200)
         	->assertSee('Usuarios')
-            ->assertSee('Yuri Vanessa')/*se valida desde un arreglo en el controlador que valide este nombre impreso en la vista*/
-            ->assertSee('UsuarioDePrueba')
-            ->assertSee('lucho');
+          ->assertSee('lucho');
         	/*ademas comprueba que si esta retornando el texto Usuarios*/
 
     }
@@ -45,8 +48,7 @@ class UserModuleTest extends TestCase
     {
         /*permite saber que esa ruta esta corriendo exitosamente osea en estado 200*/
         //veñirifica que existan usuarios en la consukta reakuzada
-        DB::table('users')->truncate();
-        
+
         $this->get('/usuarios')
             ->assertStatus(200)
             ->assertSee('No hay usuarios registrados');
