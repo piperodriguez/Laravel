@@ -14,6 +14,19 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+    
+    
+    public function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+    
+    
     public function index()
     {
     	//-----------------------------------------------------
@@ -23,13 +36,14 @@ class UserController extends Controller
         // $users = User::all(); asi es para llamar un modelo obviamente de una tabla
 
         //FORMA NUMERO 1 constructor de consultas:
-        //$users = DB::table('users')->get();
-
+        //$users = DB::table('users')->get();        
         //FORMA NUMERO 2 CON MODELO:
         $users = User::all();
-
+    
         $msg = "Usuarios De la BD";
-
+        
+        
+        
         return view('users')->with([
             'users' => $users,
             'title' => 'Listado de Usuarios',

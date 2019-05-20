@@ -8,13 +8,28 @@
 <body>
 	<h1>{{ $title }}</h1>
 
-	<ul>
+	<table border="2">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Detalle</th>
+            </tr>
+        </thead> 
+        <tbody>
 		@forelse ($users as $user)
-			<li>{{ $user->first_name }}, {{ $user->email }}</li>
+            <tr>
+                <td>{{ $user->first_name }} {{$user->last_name}}</td>
+                <td>{{ $user->email }}</td>
+                <td><a href="usuarios/{{$user->id}}">Visualizar</a></td>
+            </tr>
 		@empty
-			<label>No hay usuarios registrados</label>
+            <tr>   
+                <td><label>No hay usuarios registrados</label></td>
+            </tr>
 		@endforelse
-	</ul>
+        </tbody>
+	</table>
 
 
 

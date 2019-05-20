@@ -26,24 +26,37 @@ class UserModuleTest extends TestCase
        /*sirve para verificar que exista usuario en la vista usuarios con el nombre lucho
         asi no exista en la bade de datos
        */
-       $propfesion = Profesiones::select('id_profesion')->where(['titulo' => 'Back-End Developer'])->value('id_profesion');
-
+       $propfesion = Profesiones::select('id_profesion')->where(['titulo' => 'Back-End Developer'])->value('id_profesion');;
+        
+        //generar email aleatorio
+        
+        $length = 5;
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $email = '';
+        for ($i = 0; $i < $length; $i++) {
+            $email .= $characters[rand(0, $charactersLength - 1)];
+        }
+        
+        $email_all = $email.'@gmail.com';
+        
+        
+        
         factory(User::class)->create([
           'first_name' => 'Lucho',
           'last_name' => 'Diaz',
-          'email' => 'lagloriadelucho@gmail.com',
           'password' => bcrypt('123456'),
           'is_admin' => false,
           'website' => 'www.solati.com.co',
-          'id_profesion' => $propfesion
-
+          'id_profesion' => $propfesion,
+          'email' =>  $email_all
         ]);
         //como se soliucita en la prueba que exista el usuario lucho se crea aqui mismo en las pruebas
     	/*permite saber que esa ruta esta corriendo exitosamente osea en estado 200*/
         $this->get('/usuarios')
         	->assertStatus(200)
         	->assertSee('Usuarios')
-          ->assertSee('lucho');
+          ->assertSee('Lucho');
         	/*ademas comprueba que si esta retornando el texto Usuarios*/
 
     }
@@ -64,10 +77,23 @@ class UserModuleTest extends TestCase
 
     function testDetalleUsuario()
     {
-
+        
+        //generar email aleatorio
+        
+        $length = 5;
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $email = '';
+        for ($i = 0; $i < $length; $i++) {
+            $email .= $characters[rand(0, $charactersLength - 1)];
+        }
+        
+        $email_all = $email.'@gmail.com';
+        
       $user = factory(User::class)->create([
         'first_name' => 'Ricardo',
         'last_name' => 'Arjona',
+        'email' =>  $email_all
 
       ]);
 
