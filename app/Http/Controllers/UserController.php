@@ -30,7 +30,7 @@ class UserController extends Controller
 
         $msg = "Usuarios De la BD";
 
-        return view('users')->with([
+       return view('usuarios/users')->with([
             'users' => $users,
             'title' => 'Listado de Usuarios',
             'mensaje' => $msg
@@ -39,7 +39,6 @@ class UserController extends Controller
 
     public function show($id)
     {
-        print_r($id);
         //con base de datps
         $user = User::find($id);
 

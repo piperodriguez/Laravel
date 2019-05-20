@@ -1,0 +1,23 @@
+GENERAR URLs Laravel
+
+
+Una de las ventajas de una página web es la posibilidad de poder navegar mediante enlaces. En esta lección aprenderemos cómo crear enlaces en Laravel utilizando los diferentes helpers que tenemos disponibles,
+
+
+como lo son url(), action() y route()
+
+
+tenemos un listado de usuarios vamos a realizar un hipervinculo al detalle del usuario
+
+
+
+nos dirijimos a la vista users.blade,php
+
+
+
+
+
+
+
+
+

@@ -8,13 +8,34 @@
 <body>
 	<h1>{{ $title }}</h1>
 
-	<ul>
+	<table border="2">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Detalle</th>
+			</tr>
+		</thead>
+		<tbody>
 		@forelse ($users as $user)
-			<li>{{ $user->first_name }}, {{ $user->email }}</li>
+			<tr>
+				<td>
+					{{ $user->first_name }}
+				</td>
+				<td>
+					{{ $user->email }}
+				</td>
+				<td>
+					<!--<a href="{{ url('/usuarios/'.$user->id)}}">Ver Detalles</a>-->
+					<!--<a href="{{ action('UserController@show', ['id' => $user->id ]) }}">Ver detalle</a>-->
+					<a href="{{ route ('users.show', ['id' => $user->id]) }}">Detalle</a>
+				</td>
+			</tr>
 		@empty
 			<label>No hay usuarios registrados</label>
 		@endforelse
-	</ul>
+		</tbody>
+	</table>
 
 
 

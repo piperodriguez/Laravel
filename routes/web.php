@@ -34,13 +34,13 @@ Route::get('/profesiones', 'ProfesionesController@index',function() {
 });
 
 
-Route::get('/usuarios', 'UserController@index');
+Route::get('/usuarios', 'UserController@index')->name('usuarios');
 
 /*ahora creemos la ruta que apunte al controlador y despues del arroba a un metodo*/
 
-Route::get('/usuarios/{id}', 'UserController@show')->where('id', '[0-9]+');
+Route::get('/usuarios/{id}', 'UserController@show')->where('id', '[0-9]+')->name('users.show');
 
-Route::get('/usuarios/nuevo', 'UserController@create');
+Route::get('/usuarios/nuevo', 'UserController@create')->name('users.create');
 
 Route::get('/saludo/{nombre}/{username?}', 'WelcomeUserController@index');
 
