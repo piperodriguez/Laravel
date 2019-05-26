@@ -38,7 +38,7 @@ Route::get('/usuarios', 'UserController@index')->name('usuarios');
 
 /*ahora creemos la ruta que apunte al controlador y despues del arroba a un metodo*/
 
-Route::get('/usuarios/{id}', 'UserController@show')->where('id', '[0-9]+')->name('users.show');
+Route::get('/usuarios/{user}', 'UserController@show')->where('user', '[0-9]+')->name('users.show');
 
 Route::get('/usuarios/nuevo', 'UserController@create')->name('users.create');
 

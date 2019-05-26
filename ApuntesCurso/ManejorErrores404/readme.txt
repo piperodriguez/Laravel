@@ -30,3 +30,14 @@ Retornar una vista con status 404
 Cuando retornamos el llamado al helper view() desde una acción, Laravel va a retornar el contenido de la vista con el status HTTP 200 (OK). Nosotros podemos retornar una vista con status 404 (no encontrado) utilizando el helper response y luego encadenando el llamado al método view. Al método view pasamos como primer argumento el nombre de la vista, como segundo argumento los datos y como tercer argumento el status HTTP
 
 
+Uso de findOrFail
+El método findOrFail intentará encontrar el registro correspondiente a la llave primaria pasada como argumento, y si este no es encontrado devolverá una excepción de tipo ModelNotFoundException:
+
+$user = User::findOrFail($id);
+1
+$user = User::findOrFail($id);
+También podemos utilizar el método firstOrFail, que devuelve el primer resultado de la consulta y si ningún registro es encontrado retorna una excepción ModelNotFoundException:
+
+$user = User::where('posts', '>', 100)->firstOrFail();
+1
+$user = User::where('posts', '>', 100)->firstOrFail();

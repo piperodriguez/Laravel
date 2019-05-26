@@ -43,7 +43,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function show($id)
+    public function show(User $user)
     {
 
         /*TRADICIONAL PARA EL MANEJO DE 404*/
@@ -56,11 +56,10 @@ class UserController extends Controller
             //envia tres parametro el primero la vista el segundo los datos que van vacioes y en el tercero el estado
         }*/
 
-
         /*FINDORFAIL METODO ERRORE 404*/
         
 
-        $user = User::findOrFail($id);
+        //$user = User::findOrFail($id);
 
     	return view('usuarios.detalleuser', compact('user'));
         
