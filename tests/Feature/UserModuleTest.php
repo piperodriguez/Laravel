@@ -88,4 +88,34 @@ class UserModuleTest extends TestCase
       ->assertStatus(200)
       ->assertSee('Ricardo Arjona');
     }
+
+
+
+    function it_shows_a_default_message_if_the_users_list_is_empty()
+    {
+        $this->get('/usuarios')
+            ->assertStatus(200)
+            ->assertSee('No hay usuarios registrados.');
+    }
+
+
+
+
+
+    function testMostrarError404_Si_Usuario_No_Existe()
+    {
+      $this->get('/usuarios/999')
+      ->assertStatus(404)
+      ->assertSee('Usuario no pudo ser encontrado');
+
+    }
+
+
+
+
+
+
+
+
+
 }

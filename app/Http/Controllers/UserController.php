@@ -14,6 +14,10 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+
+
+
+
     public function index()
     {
     	//-----------------------------------------------------
@@ -27,8 +31,10 @@ class UserController extends Controller
 
         //FORMA NUMERO 2 CON MODELO:
         $users = User::all();
-
         $msg = "Usuarios De la BD";
+
+
+
 
        return view('usuarios/users')->with([
             'users' => $users,
@@ -39,10 +45,25 @@ class UserController extends Controller
 
     public function show($id)
     {
-        //con base de datps
-        $user = User::find($id);
 
-    	return view('usuarios/detalleuser', compact('user'));
+        /*TRADICIONAL PARA EL MANEJO DE 404*/
+        //con base de datps
+
+      /*  $user = User::find($id);
+        
+        if ($user == "") {    
+            return response()->view('errors.404', [], 404);
+            //envia tres parametro el primero la vista el segundo los datos que van vacioes y en el tercero el estado
+        }*/
+
+
+        /*FINDORFAIL METODO ERRORE 404*/
+        
+
+        $user = User::findOrFail($id);
+
+    	return view('usuarios.detalleuser', compact('user'));
+        
     }
 
     public function create()
