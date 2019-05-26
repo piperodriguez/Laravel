@@ -8,6 +8,14 @@
 <body>
 	<h1>{{ $title }}</h1>
 
+	<nav>
+		<ul>
+			<li>
+				<a href="{{ route('users.nuevo') }}">Crear Usuarios</a>
+			</li>
+		</ul>
+	</nav>
+	<br>
 	<table border="2">
 		<thead>
 			<tr>

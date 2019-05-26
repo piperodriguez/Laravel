@@ -67,6 +67,18 @@ class UserController extends Controller
 
     public function create()
     {
-    	return'Crear nuevo Usuario';
+    	return view('usuarios.FormNewUser');
     }
+
+
+
+    public function saveUser()
+    {
+        print_r($_REQUEST);
+        return'Procesando Información...';
+    }
+
+
+
+
 }
