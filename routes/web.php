@@ -50,4 +50,4 @@ Route::get('/saludo/{nombre}/{username?}', 'WelcomeUserController@index');
 
 Route::get('/usuarios/nuevo', 'UserController@create')->name('users.nuevo');//vista formulario
 
-Route::post('/usuarios', 'UserController@saveUser');//ejecutcuin del formulario
+Route::post('/usuarios/save', 'UserController@save');//ejecutcuin del formulario

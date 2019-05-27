@@ -110,12 +110,41 @@ class UserModuleTest extends TestCase
 
     }
 
+    /**
+     * A basic test example.
+     *
+     * @test
+     */
+
+    function test_CrearNuevoUsuario()
+    {
+
+      $this->withoutExceptionHandling();
+
+        $length = 5;
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $email = '';
+        for ($i = 0; $i < $length; $i++) {
+            $email .= $characters[rand(0, $charactersLength - 1)];
+        }
+
+        $email_all = $email.'@gmail.com';
 
 
+         $this->call('POST', '/usuarios/save', [
+            'first_name' => 'pepe',
+            'last_name' => 'rodriguez',
+            'email' => $email_all,
+            'password' => '123456'
+          ])->assertRedirect('/usuarios/');
 
 
-
-
-
+         $this->assertCredentials([
+            'first_name' => 'pepe',
+            'last_name' => 'rodriguez',
+            'password' => '123456'
+         ]);
+    }
 
 }

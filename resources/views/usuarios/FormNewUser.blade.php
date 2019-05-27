@@ -2,11 +2,11 @@
 <br>
 <h1>Creacion de un nuevo usuarios</h1>
 <br>
-<form method="POST" action="{{ url('usuarios') }}">
+<form method="POST" action="{{ url('usuarios/save') }}">
 
 	{{csrf_field()}}
 	<!--Toquen de seguridad-->
-	<input type="text" name="nombre">
+	<input type="text" name="first_name">
 	<br>
 	<button type="submit">Crear Usuario</button>
 </form>

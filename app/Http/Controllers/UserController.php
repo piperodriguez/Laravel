@@ -67,15 +67,28 @@ class UserController extends Controller
 
     public function create()
     {
+
+
+
     	return view('usuarios.FormNewUser');
     }
 
 
 
-    public function saveUser()
+    public function save()
     {
-        print_r($_REQUEST);
-        return'Procesando Información...';
+
+        $dato = request()->all();
+
+        User::create([
+            'first_name' => $dato['first_name'],
+            'last_name' => $dato['last_name'],
+            'email' => $dato['email'],
+            'password' => bcrypt($dato['password'])
+
+        ]);
+
+        return redirect()->route('usuarios');
     }
 
 
