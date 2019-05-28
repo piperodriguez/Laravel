@@ -68,8 +68,6 @@ class UserController extends Controller
     public function create()
     {
 
-
-
     	return view('usuarios.FormNewUser');
     }
 
@@ -78,7 +76,22 @@ class UserController extends Controller
     public function save()
     {
 
-        $dato = request()->all();
+       // $dato = request()->all();
+        /*valida que el campo nombre venga con valor o lo redirecciona a la vista del formulario withwerrors es para mandar los errores al test*/
+       /* if (empty($dato['first_name'])) {
+            return redirect()->route('users.nuevo')->withErrors([
+                'first_name' => 'el campo es obligatorio'
+            ]);
+
+        }*/
+        //dd(request()->all());
+        $dato = request()->validate([
+            'first_name' => 'required'
+        ],[
+            'first_name.required' => 'el campo es obligatorio'
+
+        ]);
+
 
         User::create([
             'first_name' => $dato['first_name'],

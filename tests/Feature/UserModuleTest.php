@@ -148,4 +148,27 @@ class UserModuleTest extends TestCase
          ]);
     }
 
+
+      function test_campoNombreRequerido()
+      {
+          $this->withoutMiddleware();
+          //$this->withoutExceptionHandling();
+
+          //DB::table('users')->truncate();
+
+
+          $response = $this->from(route('users.nuevo'))
+          ->post('/usuarios/save', [
+            'first_name' => '',
+            'last_name' => 'sanchez',
+            'email' => 'juan@gmail.com'
+          ])->assertRedirect(route('users.nuevo'))
+          ->assertSessionHasErrors(['first_name' => 'el campo es obligatorio']);
+
+          $response = $this->assertDatabaseMissing('users', [
+            'email' => 'juan@gmail.com'
+          ]);
+
+
+      }
 }
