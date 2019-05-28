@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Listado de Usuarios - Curso Laraver</title>
-	<!-- e se utiliza para que laravel filtre contenido js y html externo -->
-</head>
-<body>
+@extends('layout')
+
+@section('contenido')
 	<h1>{{ $title }}</h1>
 
 	<nav>
@@ -16,7 +11,7 @@
 		</ul>
 	</nav>
 	<br>
-	<table border="2">
+	<table border="2" class="table">
 		<thead>
 			<tr>
 				<th>Nombre</th>
@@ -44,7 +39,7 @@
 		@endforelse
 		</tbody>
 	</table>
-
+@endsection
 
 
 
@@ -60,5 +55,3 @@
 	@endif
 	-->
 
-</body>
-</html>

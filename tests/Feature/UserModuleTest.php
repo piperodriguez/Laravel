@@ -118,8 +118,9 @@ class UserModuleTest extends TestCase
 
     function test_CrearNuevoUsuario()
     {
-
-      $this->withoutExceptionHandling();
+      //deshabilita el token del formulario en la prueba
+      $this->withoutMiddleware();
+     // $this->withoutExceptionHandling();
 
         $length = 5;
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';

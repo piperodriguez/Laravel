@@ -50,21 +50,21 @@ class UserController extends Controller
         //con base de datps
 
       /*  $user = User::find($id);
-        
-        if ($user == "") {    
+
+        if ($user == "") {
             return response()->view('errors.404', [], 404);
             //envia tres parametro el primero la vista el segundo los datos que van vacioes y en el tercero el estado
         }*/
 
         /*FINDORFAIL METODO ERRORE 404*/
-        
+
 
         //$user = User::findOrFail($id);
 
     	return view('usuarios.detalleuser', compact('user'));
-        
-    }
 
+    }
+    //metodo que me lleva al formulario
     public function create()
     {
 
@@ -73,7 +73,7 @@ class UserController extends Controller
     	return view('usuarios.FormNewUser');
     }
 
-
+    //metodo que guarda el formulario xdddd
 
     public function save()
     {
