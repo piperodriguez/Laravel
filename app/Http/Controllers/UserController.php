@@ -87,13 +87,15 @@ class UserController extends Controller
         $dato = request()->validate([
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required',
-            'password' => 'required'
+            'email' => ['required','email','unique:users,email'],
+            'password' => ['required','min:6']
         ],[
             'first_name.required' => 'el campo first_name es obligatorio',
             'last_name.required' => 'el campo last_name es obligatorio',
             'email.required' => 'el campo email es obligatorio',
-            'password.required' => 'el campo password es obligatorio'
+            'email.unique' => 'Error ud esta como sospechoso ome',
+            'password.required' => 'el campo password es obligatorio',
+            'password.min' => 'el campo debe constar mminimo de 6 caracteres',
 
         ]);
 

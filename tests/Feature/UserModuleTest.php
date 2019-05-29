@@ -89,7 +89,12 @@ class UserModuleTest extends TestCase
       ->assertSee('Ricardo Arjona');
     }
 
-
+    function test_cargaexitosaFormularioNuevoUsuario()
+    {
+      $this->get('/usuarios/nuevo')
+      ->assertStatus(200)
+      ->assertSee('Creacion de un nuevo usuario');
+    }
 
     function it_shows_a_default_message_if_the_users_list_is_empty()
     {
@@ -168,6 +173,110 @@ class UserModuleTest extends TestCase
 
           $response = $this->assertDatabaseMissing('users', [
             'email' => 'juan@gmail.com'
+          ]);
+
+
+      }
+
+      function test_campoEmailRequerido()
+      {
+          $this->withoutMiddleware();
+          //$this->withoutExceptionHandling();
+
+          //DB::table('users')->truncate();
+
+
+          $response = $this->from(route('users.nuevo'))
+          ->post('/usuarios/save', [
+            'first_name' => 'Dulio',
+            'last_name' => 'sanchez',
+            'email' => '',
+            'password' => bcrypt('laravel')
+          ])->assertRedirect(route('users.nuevo'))
+          ->assertSessionHasErrors(['email' => 'el campo email es obligatorio']);
+
+          $response = $this->assertDatabaseMissing('users', [
+            'email' => 'juan@gmail.com'
+          ]);
+
+
+      }
+
+      function test_campoEmailNoValido()
+      {
+          $this->withoutMiddleware();
+          //$this->withoutExceptionHandling();
+
+          //DB::table('users')->truncate();
+
+
+          $response = $this->from(route('users.nuevo'))
+          ->post('/usuarios/save', [
+            'first_name' => 'Dulio',
+            'last_name' => 'sanchez',
+            'email' => 'No-Vaslido',
+            'password' => bcrypt('laravel')
+          ])->assertRedirect(route('users.nuevo'))
+          ->assertSessionHasErrors(['email']);
+
+          $response = $this->assertDatabaseMissing('users', [
+            'email' => 'No-Vaslido'
+          ]);
+
+
+      }
+
+
+      /*function test_campoEmailUnicoBD()
+      {
+          $this->withoutMiddleware();
+         // $this->withoutExceptionHandling();
+
+          //DB::table('users')->truncate();
+          factory(User::class)->create([
+            'first_name' => 'Ivan',
+            'last_name' => 'Aguilar',
+            'email' => 'vargasjuan367@gmail.com'
+          ]);
+
+          $response = $this->from(route('users.nuevo'))
+          ->post('/usuarios/save', [
+            'email' => 'vargasjuan367@gmail.com',
+            'password' => bcrypt('laravel')
+          ])->assertRedirect(route('users.nuevo'))
+          ->assertSessionHasErrors(['email']);
+
+
+         //  $response = $this->assertEquals(0, User::count());
+
+
+          $response = $this->assertDatabaseHas('users', [
+            'email' => 'vargasjuan367@gmail.com'
+          ]);
+
+
+      }*/
+
+
+      function test_campoPasswordRequerido()
+      {
+          $this->withoutMiddleware();
+//        $this->withoutExceptionHandling();
+
+          //DB::table('users')->truncate();
+
+
+          $response = $this->from(route('users.nuevo'))
+          ->post('/usuarios/save', [
+            'first_name' => 'Kraken',
+            'last_name' => 'sanchez',
+            'email' => 'uan@gmail.com',
+            'password' =>''
+          ])->assertRedirect(route('users.nuevo'))
+          ->assertSessionHasErrors(['password']);
+
+          $response = $this->assertDatabaseMissing('users', [
+            'first_name' => 'Kraken'
           ]);
 
 

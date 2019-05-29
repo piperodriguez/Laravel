@@ -16,6 +16,7 @@
 			<tr>
 				<th>Nombre</th>
 				<th>Apellido</th>
+				<th>Email Addres</th>
 				<th>Detalle</th>
 			</tr>
 		</thead>
@@ -24,6 +25,9 @@
 			<tr>
 				<td>
 					{{ $user->first_name }}
+				</td>
+				<td>
+					{{ $user->last_name }}
 				</td>
 				<td>
 					{{ $user->email }}

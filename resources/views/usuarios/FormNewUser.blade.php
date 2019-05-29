@@ -3,7 +3,7 @@
 @section('contenido')
 <a href="{{ route('usuarios') }}">Listado de Usuarios</a>
 <br>
-<h1>Creacion de un nuevo usuarios</h1>
+<h1>Creacion de un nuevo usuario</h1>
 @if($errors->any())
 	<div class="alert alert-danger">
 		<p>Por favor corrige los siguientes errores:</p>
