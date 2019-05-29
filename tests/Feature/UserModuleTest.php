@@ -120,7 +120,7 @@ class UserModuleTest extends TestCase
     {
       //deshabilita el token del formulario en la prueba
       $this->withoutMiddleware();
-     // $this->withoutExceptionHandling();
+       //$this->withoutExceptionHandling();
 
         $length = 5;
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -161,9 +161,10 @@ class UserModuleTest extends TestCase
           ->post('/usuarios/save', [
             'first_name' => '',
             'last_name' => 'sanchez',
-            'email' => 'juan@gmail.com'
+            'email' => 'juan@gmail.com',
+            'password' => bcrypt('laravel')
           ])->assertRedirect(route('users.nuevo'))
-          ->assertSessionHasErrors(['first_name' => 'el campo es obligatorio']);
+          ->assertSessionHasErrors(['first_name' => 'el campo first_name es obligatorio']);
 
           $response = $this->assertDatabaseMissing('users', [
             'email' => 'juan@gmail.com'

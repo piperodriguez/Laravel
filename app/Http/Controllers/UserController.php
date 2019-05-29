@@ -84,16 +84,21 @@ class UserController extends Controller
             ]);
 
         }*/
-        //dd(request()->all());
         $dato = request()->validate([
-            'first_name' => 'required'
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+            'password' => 'required'
         ],[
-            'first_name.required' => 'el campo es obligatorio'
+            'first_name.required' => 'el campo first_name es obligatorio',
+            'last_name.required' => 'el campo last_name es obligatorio',
+            'email.required' => 'el campo email es obligatorio',
+            'password.required' => 'el campo password es obligatorio'
 
         ]);
 
-
         User::create([
+
             'first_name' => $dato['first_name'],
             'last_name' => $dato['last_name'],
             'email' => $dato['email'],
