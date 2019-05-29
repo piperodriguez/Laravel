@@ -45,7 +45,6 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-
         /*TRADICIONAL PARA EL MANEJO DE 404*/
         //con base de datps
 
@@ -112,6 +111,8 @@ class UserController extends Controller
     }
 
 
-
-
+        public function editUser(User $user)
+        {
+            return view('usuarios.FormEditar', ['user' => $user]);
+        }
 }

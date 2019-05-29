@@ -38,16 +38,17 @@ Route::get('/usuarios', 'UserController@index')->name('usuarios');
 
 /*ahora creemos la ruta que apunte al controlador y despues del arroba a un metodo*/
 
-Route::get('/usuarios/{user}', 'UserController@show')->where('user', '[0-9]+')->name('users.show');
-
-
-
-Route::get('/saludo/{nombre}/{username?}', 'WelcomeUserController@index');
-
-
+Route::get('/usuarios/{user}', 'UserController@show')
+->where('user', '[0-9]+')
+->name('users.show');
 
 /*ENvio de rutas POST seguras*/
 
 Route::get('/usuarios/nuevo', 'UserController@create')->name('users.nuevo');//vista formulario
 
+Route::get('usuarios/{user}/editar', 'UserController@editUser')->name('usuarios.editar');
+
+
 Route::post('/usuarios/save', 'UserController@save');//ejecutcuin del formulario
+
+Route::get('/saludo/{nombre}/{username?}', 'WelcomeUserController@index');
