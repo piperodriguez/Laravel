@@ -46,9 +46,12 @@ Route::get('/usuarios/{user}', 'UserController@show')
 
 Route::get('/usuarios/nuevo', 'UserController@create')->name('users.nuevo');//vista formulario
 
-Route::get('usuarios/{user}/editar', 'UserController@editUser')->name('usuarios.editar');
-
-
 Route::post('/usuarios/save', 'UserController@save');//ejecutcuin del formulario
 
+Route::get('usuarios/{user}/editar', 'UserController@editUser')->name('usuarios.editar');
+
+//Ruta para ejecutar la actualizacion del usuario
+Route::put('usuarios/{user}', 'UserController@update');
+
 Route::get('/saludo/{nombre}/{username?}', 'WelcomeUserController@index');
+

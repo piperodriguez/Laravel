@@ -113,6 +113,19 @@ class UserController extends Controller
 
         public function editUser(User $user)
         {
+            /*renderiza la vista del formulario*/
             return view('usuarios.FormEditar', ['user' => $user]);
+        }
+
+        public function update(User $user)
+        {
+             
+            $data = request()->all();
+ 
+            $data['password'] = bcrypt($data['password']);
+            //return redirect("usuarios/{$user->id}");
+            $user->update($data);
+            return redirect()->route('users.show', ['user' => $user["id"]]);
+            
         }
 }

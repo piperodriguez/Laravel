@@ -125,7 +125,7 @@ class UserModuleTest extends TestCase
     {
       //deshabilita el token del formulario en la prueba
       $this->withoutMiddleware();
-       //$this->withoutExceptionHandling();
+       $this->withoutExceptionHandling();
 
         $length = 5;
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -295,6 +295,35 @@ class UserModuleTest extends TestCase
             return $viewUser->id == $user->id;
           });
       }
+
+
+    function test_ActualizarUsuario()
+    {
+      //deshabilita el token del formulario en la prueba
+     // $this->withoutMiddleware();
+       
+
+        //  $this->withoutExceptionHandling();
+         
+        $user = factory(User::class)->create();
+
+         //el metodo put actualizar put
+
+        $id = $user["id"];
+
+         $this->call('put', "/usuarios/{$user->id}", [
+            'first_name' => 'Edgardo',
+            'last_name' => 'Rodríguez',
+            'password' => '123456'
+          ])->assertRedirect('/usuarios/'.$id);
+
+
+         $this->assertCredentials([
+            'first_name' => 'Edgardo',
+            'last_name' => 'Rodríguez',
+            'password' => '123456'
+         ]);
+    }
 
 
 }
