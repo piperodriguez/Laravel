@@ -51,7 +51,7 @@ Route::post('/usuarios/save', 'UserController@save');//ejecutcuin del formulario
 Route::get('usuarios/{user}/editar', 'UserController@editUser')->name('usuarios.editar');
 
 //Ruta para ejecutar la actualizacion del usuario
-Route::put('usuarios/{user}', 'UserController@update');
+Route::put('usuarios/{user}', 'UserController@updateUser');
 
 Route::get('/saludo/{nombre}/{username?}', 'WelcomeUserController@index');
 

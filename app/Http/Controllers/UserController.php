@@ -117,10 +117,18 @@ class UserController extends Controller
             return view('usuarios.FormEditar', ['user' => $user]);
         }
 
-        public function update(User $user)
+
+
+        public function updateUser(User $user)
         {
              
-            $data = request()->all();
+             
+            $data = request()->validate([
+                'first_name' => 'required',
+                'last_name' => 'required',
+                'password' => 'required',
+                'email' => ['email','unique:users,email'],
+            ]);
  
             $data['password'] = bcrypt($data['password']);
             //return redirect("usuarios/{$user->id}");

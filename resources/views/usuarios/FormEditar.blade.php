@@ -14,9 +14,9 @@
 		</ul>
 	</div>
 @endif
-<br>
-<form method="POST" action="{{ url('usuarios/save') }}">
-
+<form method="POST" action="{{ url("usuarios/{$user->id}") }}">
+	{{ method_field('PUT') }}
+	<!--para enviar el formulario con el metodo put-->
 	{{csrf_field()}}
 	<!--Toquen de seguridad-->
 	<div class="form-group">
@@ -38,6 +38,6 @@
 		<input type="password" name="password" class="form-control" placeholder="Mayor a 6 caracteres">
 
 	</div>
-	<button type="submit">Crear Usuario</button>
+	<button type="submit">Actualizar Usuario</button>
 </form>
 @endsection
