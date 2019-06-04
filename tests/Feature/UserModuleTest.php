@@ -339,14 +339,14 @@ class UserModuleTest extends TestCase
       ->put("usuarios/".$user["id"],[
             'first_name' => '',
             'last_name' => 'Rodríguez',
-            'email' => 'edgardorodriguezzabala@hotmail.com',
+            'email' => 'pachi@hotmail.com',
             'password' => '123456'
       ])
       ->assertRedirect("usuarios/".$id."/editar")
       ->assertSessionHasErrors(['first_name']);
 
 
-      $this->assertDatabaseMissing('users', ['email' => 'edgardorodriguezzabala@hotmail.com']);
+      $this->assertDatabaseMissing('users', ['email' => 'pachi@hotmail.com@hotmail.com']);
 
 
     }
@@ -364,39 +364,52 @@ class UserModuleTest extends TestCase
       ->put("usuarios/".$user["id"],[
             'first_name' => 'Romano',
             'last_name' => '',
-            'email' => 'edgardorodriguezzabala@hotmail.com',
+            'email' => 'pipiolo@hotmail.com',
             'password' => '123456'
       ])
       ->assertRedirect("usuarios/".$id."/editar")
       ->assertSessionHasErrors(['last_name']);
 
 
-      $this->assertDatabaseMissing('users', ['email' => 'edgardorodriguezzabala@hotmail.com']);
+      $this->assertDatabaseMissing('users', ['email' => 'pipiolo@hotmail.com']);
 
 
     }
 
 
-    function test_Updatepasswordrequerido()
+    function test_UpdatepasswordOpcional()
     {
       //$this->withoutExceptionHandling();
 
-      $user = factory(User::class)->create();
+             self::markTestIncomplete();
+        return;
 
-      $id = $user["id"];
+
+      $old_password = 'CLAVE_ANTERIOR';
+
+      $user = factory(User::class)->create([
+        'first_name' => 'jessy',
+        'last_name' => 'Uribe',
+        'password' => bcrypt($old_password)
+
+      ]);
       
       $this->from("usuarios/{$user->id}/editar")
-      ->put("usuarios/".$user["id"],[
+      ->put("usuarios/{$user->id}",[
             'first_name' => 'Romano',
             'last_name' => 'Vargas',
-            'password' => '',
             'email' => 'edgardorodriguezzabala@hotmail.com',
+            'password' => ''  
       ])
-      ->assertRedirect("usuarios/".$id."/editar")
-      ->assertSessionHasErrors(['password']);
+      ->assertRedirect("usuarios/{$user->id}");
 
 
-      $this->assertDatabaseMissing('users', ['email' => 'edgardorodriguezzabala@hotmail.com']);
+      $this->assertCredentials([
+        'first_name' => 'Romano',
+        'last_name' => 'Vargas',
+        'email' => 'edgardorodriguezzabala@hotmail.com',
+        'password' => ''
+      ]);
 
 
     }
